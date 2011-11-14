@@ -445,7 +445,7 @@ class IndexSearcher(lucene.IndexSearcher, IndexReader):
         if count is None:
             collector = Collector()
         else:
-            count, inorder = min(count, self.maxDoc()), not weight.scoresDocsOutOfOrder()
+            inorder = not weight.scoresDocsOutOfOrder()
             if sort is None:
                 collector = lucene.TopScoreDocCollector.create(count, inorder)
             else:
